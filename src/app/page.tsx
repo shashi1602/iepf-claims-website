@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { EMAILJS_CONFIG } from '../config/emailjs';
+import { EMAILJS_CONFIG, validateEmailJSConfig } from '../config/emailjs';
 import { 
   Menu, 
   X, 
@@ -37,8 +37,18 @@ export default function Home() {
     setIsSubmitting(true);
     
     try {
+      // Validate EmailJS configuration first
+      const configValidation = validateEmailJSConfig();
+      if (!configValidation.isValid) {
+        console.error('EmailJS Configuration Issues:', configValidation.issues);
+        throw new Error(`EmailJS not properly configured: ${configValidation.issues.join(', ')}`);
+      }
+      
       // Use EmailJS for contact form (works with static sites)
       const emailjs = (await import('@emailjs/browser')).default;
+      
+      // Debug: Log configuration
+      console.log('EmailJS Config:', EMAILJS_CONFIG);
       
       // Initialize EmailJS
       emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
@@ -50,11 +60,24 @@ export default function Home() {
         to_email: EMAILJS_CONFIG.TO_EMAIL
       };
 
+      // Debug: Log template parameters
+      console.log('Template params:', templateParams);
+      console.log('Service ID:', EMAILJS_CONFIG.SERVICE_ID);
+      console.log('Template ID:', EMAILJS_CONFIG.TEMPLATE_ID);
+      console.log('Form data being sent:', {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message
+      });
+
       const response = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
         templateParams
       );
+
+      // Debug: Log response
+      console.log('EmailJS Response:', response);
 
       if (response.status === 200) {
         console.log('Email sent successfully:', response);
@@ -69,6 +92,11 @@ export default function Home() {
       }
     } catch (error) {
       console.error('Error sending email:', error);
+      console.error('Error details:', {
+        message: error instanceof Error ? error.message : 'Unknown error',
+        stack: error instanceof Error ? error.stack : undefined,
+        error: error
+      });
       setIsSubmitting(false);
       setSubmitStatus('error');
       
