@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IEPF Claims Pro - Professional Share Recovery Website
 
-## Getting Started
+A modern, responsive website for IEPF claims, share recovery, and dividend collection services. Built with Next.js, Tailwind CSS, and Framer Motion.
 
-First, run the development server:
+## 🚀 Features
 
+- **Modern Design**: Clean, professional layout with smooth animations
+- **Responsive**: Fully responsive design for all devices
+- **Interactive**: Smooth scrolling navigation and hover effects
+- **Contact Form**: Working contact form with success feedback
+- **SEO Optimized**: Proper metadata and semantic HTML
+- **Accessible**: Built with accessibility best practices
+
+## 🛠️ Tech Stack
+
+- **Next.js 15** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Smooth animations and transitions
+- **Lucide React** - Beautiful icons
+- **EmailJS** - Contact form integration (ready to configure)
+
+## 📦 Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd iepf-claims-website
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## 🎨 Customization
 
-To learn more about Next.js, take a look at the following resources:
+### Contact Information
+Update the contact details in `/src/app/page.tsx`:
+- Name: Shashikanth Thummanapalli
+- Email: shashikanth.t@gmail.com
+- Phone: +91-XXXXXXXXXX
+- Location: Hyderabad, India
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### EmailJS Integration
+To enable the contact form:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Sign up at [EmailJS](https://www.emailjs.com/)
+2. Create an email service
+3. Get your service ID, template ID, and public key
+4. Update the form submission logic in the contact section
 
-## Deploy on Vercel
+### Colors and Branding
+The website uses a blue color scheme. To customize:
+- Primary blue: `#3b82f6` (blue-600)
+- Accent colors: green, purple, orange, red, indigo
+- Update colors in the Tailwind classes throughout the components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📱 Sections
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Hero Section** - Compelling headline with call-to-action
+2. **About Us** - Company introduction and expertise
+3. **Services** - Six service cards with detailed descriptions
+4. **Process Flow** - Four-step process explanation
+5. **Contact** - Contact form and information
+6. **Footer** - Links, contact info, and social media
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically
+
+### Netlify
+1. Build the project: `npm run build`
+2. Deploy the `out` folder to Netlify
+
+### Manual Deployment
+```bash
+npm run build
+npm run start
+```
+
+## 📄 License
+
+This project is created for IEPF Claims Pro. All rights reserved.
+
+## 👨‍💻 Contact
+
+**Shashikanth Thummanapalli**
+- Email: shashikanth.t@gmail.com
+- Location: Hyderabad, India
+
+---
+
+Built with ❤️ for professional share recovery services.
