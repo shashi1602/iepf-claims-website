@@ -27,6 +27,7 @@ export const EMAILJS_CONFIG = {
 export const EMAIL_TEMPLATE_PARAMS = {
   from_name: '', // Will be filled from form data
   from_email: '', // Will be filled from form data
+  from_mobile: '', // Will be filled from form data
   message: '', // Will be filled from form data
   to_email: EMAILJS_CONFIG.TO_EMAIL
 };

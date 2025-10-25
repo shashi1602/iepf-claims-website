@@ -27,13 +27,22 @@ export default function Home() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    mobile: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate mobile number format
+    if (!formData.mobile || formData.mobile.length !== 10 || !/^\d{10}$/.test(formData.mobile)) {
+      alert('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
@@ -56,6 +65,7 @@ export default function Home() {
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
+        from_mobile: formData.mobile,
         message: formData.message,
         to_email: EMAILJS_CONFIG.TO_EMAIL
       };
@@ -83,7 +93,7 @@ export default function Home() {
         console.log('Email sent successfully:', response);
         setIsSubmitting(false);
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', mobile: '', message: '' });
         
         // Reset status after 3 seconds
         setTimeout(() => setSubmitStatus('idle'), 3000);
@@ -505,6 +515,21 @@ export default function Home() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-2">
+                    Mobile Number *
+                  </label>
+                  <input
+                    type="tel"
+                    id="mobile"
+                    value={formData.mobile}
+                    onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="10-digit mobile number"
+                    maxLength={10}
                     required
                   />
                 </div>
