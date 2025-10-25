@@ -36,23 +36,27 @@ export default function Home() {
     setIsSubmitting(true);
     
     try {
-      // Send email directly using API route
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
-      });
+      // Use EmailJS for contact form (works with static sites)
+      const emailjs = (await import('@emailjs/browser')).default;
+      
+      // Initialize EmailJS
+      emailjs.init('YOUR_EMAILJS_PUBLIC_KEY'); // Replace with your actual key
+      
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'iepfclaimpro@gmail.com'
+      };
 
-      if (response.ok) {
-        const result = await response.json();
-        console.log('Contact form response:', result);
-        
+      const response = await emailjs.send(
+        'service_iepf_claims', // Replace with your service ID
+        'template_contact_form', // Replace with your template ID
+        templateParams
+      );
+
+      if (response.status === 200) {
+        console.log('Email sent successfully:', response);
         setIsSubmitting(false);
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
@@ -60,9 +64,7 @@ export default function Home() {
         // Reset status after 3 seconds
         setTimeout(() => setSubmitStatus('idle'), 3000);
       } else {
-        const errorData = await response.json();
-        console.error('API Error:', errorData);
-        throw new Error(errorData.error || 'Failed to send email');
+        throw new Error('Failed to send email');
       }
     } catch (error) {
       console.error('Error sending email:', error);
