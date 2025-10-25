@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { EMAILJS_CONFIG } from '../config/emailjs';
 import { 
   Menu, 
   X, 
@@ -40,18 +41,18 @@ export default function Home() {
       const emailjs = (await import('@emailjs/browser')).default;
       
       // Initialize EmailJS
-      emailjs.init('YOUR_EMAILJS_PUBLIC_KEY'); // Replace with your actual key
+      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
       
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
-        to_email: 'iepfclaimpro@gmail.com'
+        to_email: EMAILJS_CONFIG.TO_EMAIL
       };
 
       const response = await emailjs.send(
-        'service_iepf_claims', // Replace with your service ID
-        'template_contact_form', // Replace with your template ID
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
         templateParams
       );
 
