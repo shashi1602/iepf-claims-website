@@ -1,0 +1,17 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "EMAILJS_SERVICE_ID": "@emailjs_service_id",
+    "EMAILJS_TEMPLATE_ID": "@emailjs_template_id",
+    "EMAILJS_PUBLIC_KEY": "@emailjs_public_key",
+    "TO_EMAIL": "@to_email",
+    "ADMIN_USERNAME": "@admin_username",
+    "ADMIN_PASSWORD": "@admin_password",
+    "NEXTAUTH_SECRET": "@nextauth_secret",
+    "NEXTAUTH_URL": "@nextauth_url"
+  }
+}
