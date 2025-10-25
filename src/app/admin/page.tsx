@@ -48,7 +48,11 @@ export default function AdminPage() {
 
   const fetchSubmissions = async () => {
     try {
-      const response = await fetch('/api/admin/submissions');
+      const response = await fetch('/api/admin/submissions', {
+        headers: {
+          'Authorization': 'Bearer admin-token'
+        }
+      });
       if (response.ok) {
         const data = await response.json();
         setSubmissions(data);
@@ -66,6 +70,9 @@ export default function AdminPage() {
     try {
       const response = await fetch(`/api/admin/submissions/${id}`, {
         method: 'DELETE',
+        headers: {
+          'Authorization': 'Bearer admin-token'
+        }
       });
       
       if (response.ok) {
