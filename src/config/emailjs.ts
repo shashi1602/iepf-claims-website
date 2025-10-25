@@ -15,7 +15,7 @@ export const EMAILJS_CONFIG = {
   TEMPLATE_ID: 'template_contact_form',
   
   // Replace with your EmailJS public key
-  PUBLIC_KEY: 'YOUR_EMAILJS_PUBLIC_KEY',
+  PUBLIC_KEY: 'yWibLK0niFisfNmlV',
   
   // Email address to receive contact form messages
   TO_EMAIL: 'iepfclaimpro@gmail.com'
