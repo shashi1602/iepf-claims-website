@@ -600,6 +600,10 @@ export default function Home() {
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                       <Phone className="text-blue-600" size={20} />
                     </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Email</h4>
+                      <p className="text-gray-600">+91-7799282211</p>
+                    </div>
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -694,14 +698,14 @@ export default function Home() {
               <h4 className="text-lg font-semibold text-white mb-4">Contact Info</h4>
               <div className="space-y-2 text-gray-400">
                 <p>iepfclaimpro@gmail.com</p>
-                <p>+91-XXXXXXXXXX</p>
+                <p>+91-7799282211</p>
                 <p>Hyderabad, India</p>
               </div>
             </div>
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 IEPF Claims Pro. All rights reserved.</p>
+            <p>&copy; 2025 IEPF Claims Pro. All rights reserved.</p>
           </div>
         </div>
       </footer>
